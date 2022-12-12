@@ -5,6 +5,19 @@
     <TargetFramework>net7.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <ApplicationIcon>Papirus-Team-Papirus-Apps-Youtube-dl.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="Papirus-Team-Papirus-Apps-Youtube-dl.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FontAwesome5" Version="2.1.11" />
+    <PackageReference Include="PropertyChanged.Fody" Version="4.1.0" />
+    <PackageReference Include="SharpGrabber" Version="2.1.0" />
+    <PackageReference Include="SharpGrabber.YouTube" Version="1.4.0" />
+  </ItemGroup>
 
 </Project>

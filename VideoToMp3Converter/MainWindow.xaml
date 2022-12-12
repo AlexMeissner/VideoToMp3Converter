@@ -3,10 +3,56 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:fa5="http://schemas.fontawesome.com/icons/"
         xmlns:local="clr-namespace:VideoToMp3Converter"
+        DataContext="{Binding RelativeSource={RelativeSource Self}}"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-
-    </Grid>
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        Background="#222"
+        Title="MainWindow" Height="300" Width="550">
+    <Border BorderThickness="1" BorderBrush="White" CornerRadius="5" ClipToBounds="True">
+        <StackPanel Margin="20">
+            <StackPanel Margin="2" Orientation="Horizontal" HorizontalAlignment="Center" Background="Transparent" PreviewMouseLeftButtonDown="OnDrag">
+                <Grid>
+                    <Grid Margin="10" Background="White"/>
+                    <fa5:SvgAwesome Foreground="Red" Height="50" Icon="Brands_Youtube" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                </Grid>
+                <Grid Width="20"/>
+                <TextBlock VerticalAlignment="Center" Foreground="White" FontSize="30" FontFamily="Consolas" Text="YouTube to MP3 Converter"/>
+            </StackPanel>
+            <Grid Height="20"/>
+            <StackPanel Visibility="{Binding ViewModel.InputMaskVisibility}">
+                <TextBlock Margin="2" Foreground="White" FontSize="20" FontFamily="Consolas" FontWeight="Bold" Text="Video URL"/>
+                <TextBox Margin="2" Text="{Binding ViewModel.URL}" TextChanged="OnUrlChanged"/>
+                <Grid Height="20"/>
+                <TextBlock Margin="2" Foreground="White" FontSize="20" FontFamily="Consolas" FontWeight="Bold" Text="Titel"/>
+                <TextBox Margin="2" Text="{Binding ViewModel.FileName}"/>
+                <Grid Height="20"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button Margin="2" Width="200" FontSize="30" FontFamily="Consolas" Content="Beenden" Foreground="White" Background="Transparent" BorderBrush="White" Click="OnExit">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                    <Grid Width="50"/>
+                    <Button Margin="2" Width="200" FontSize="30" FontFamily="Consolas" Content="Start" Foreground="White" Background="Transparent" BorderBrush="White" Click="OnStart">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Visibility="{Binding ViewModel.SpinnerVisibility}">
+                <fa5:SvgAwesome Foreground="White" Height="150" Icon="Solid_Spinner" VerticalAlignment="Center" HorizontalAlignment="Center" Spin="True" SpinDuration="3"/>
+                <Grid Height="12"/>
+                <TextBlock Foreground="White" FontFamily="Consolas" FontSize="20" HorizontalAlignment="Center" Text="{Binding ViewModel.Step}"/>
+            </StackPanel>
+        </StackPanel>
+    </Border>
 </Window>
